@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "prettier": "find -type f -name   '*.{js,json,css,md}' -exec find prettier --single-quote --write"
+    "prettier": "find -type f -name   '*.{js,json,css,md}' -exec find prettier --single-quote --write",
+    "export": "next export",
+    "deploy": "npm run build && npm run export"
   },
   "dependencies": {
     "bulma": "^0.9.1",
