@@ -5,19 +5,17 @@ export default (props) => {
   var colorHash = new ColorHash({ saturation: 0.15 });
 
   const pushup = props.pushup;
-  const thing =
+  const background_gradient =
     `linear-gradient(` +
     colorHash.hex(pushup.userId) +
     '33,' +
     colorHash.hex(pushup.userId) +
-    'bb)';
-  console.log('thing', thing);
+    '99)';
   return (
     <section
       className="hero mb-6"
       style={{
-        color: 'blue',
-        'background-image': thing,
+        'background-image': background_gradient,
       }}
     >
       <div className="hero-body">
