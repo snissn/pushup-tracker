@@ -5,12 +5,19 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "prettier": "find -type f -name   '*.{js,json,css,md}' -exec find prettier --single-quote --write"
   },
   "dependencies": {
+    "bulma": "^0.9.1",
+    "firebase": "^7.23.0",
     "next": "9.5.4",
+    "node-sass": "^4.14.1",
+    "re-base": "^4.0.0",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-hook-form": "^6.9.2",
+    "react-timeago": "^5.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
