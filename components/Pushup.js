@@ -2,7 +2,7 @@ import TimeAgo from 'react-timeago';
 var ColorHash = require('color-hash');
 
 export default (props) => {
-  var colorHash = new ColorHash({ saturation: 0.15 });
+  var colorHash = new ColorHash({});
 
   const pushup = props.pushup;
   const background_gradient =
@@ -10,7 +10,7 @@ export default (props) => {
     colorHash.hex(pushup.userId) +
     '33,' +
     colorHash.hex(pushup.userId) +
-    '99)';
+    ')';
   return (
     <section
       className="hero mb-6"
