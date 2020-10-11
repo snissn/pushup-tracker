@@ -24,17 +24,17 @@ export default function Create() {
   };
 
   return (
-    <div className="container">
+    <div className="container" style={{ maxWidth: 480 }}>
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* register your input into the hook by invoking the "register" function */}
 
         <div className="field">
           <label className="label">Activity</label>
-          <div className="select">
+          <div className="select is-large is-fullwidth">
             <select name="activity" ref={register}>
-              <option value="pushup">Pushup</option>
-              <option value="sun-salutation-a">Sun Salutation A</option>
-              <option value="sun-salutation-b">Sun Salutation B</option>
+              <option value="Pushup">Push Ups</option>
+              <option value="Sun-Salutation-A">Sun Salutation A</option>
+              <option value="Sun-Salutation-B">Sun Salutation B</option>
             </select>
           </div>
         </div>
@@ -43,24 +43,27 @@ export default function Create() {
 
         <div className="field">
           <label className="label">Count</label>
-          <div className="control">
+          <div className="control is-fullwidth">
             <NumericInput
+              className="input is-fullwidth"
               value={1}
               style={{
                 wrap: {
                   boxShadow: '0 0 1px 1px #fff inset, 1px 1px 5px -1px #000',
                   padding: '2px 2.26ex 2px 2px',
                   borderRadius: '6px 3px 3px 6px',
-                  fontSize: 32,
+                  fontSize: 28,
+                },
+                span: {
+                  width: '100% !important',
                 },
                 input: {
                   borderRadius: '4px 2px 2px 4px',
-                  padding: '0.1ex 1ex',
                   border: '1px solid #ccc',
-                  marginRight: 4,
                   display: 'block',
-                  fontWeight: 100,
+                  fontWeight: 400,
                   textShadow: '1px 1px 1px rgba(0, 0, 0, 0.1)',
+                  'padding-left': '16px !important',
                 },
                 'input:focus': {
                   border: '1px inset #69C',
@@ -83,8 +86,17 @@ export default function Create() {
             {errors.count && <span>This field is required</span>}{' '}
           </div>
         </div>
+        <style jsx>
+          {`
+            span.react-numeric-input {
+              width: '100%';
+              paddingright: 0;
+              color: 'red';
+            }
+          `}
+        </style>
 
-        <div className="field is-grouped">
+        <div className="field is-grouped mt-4">
           <div className="control">
             <button className="button">Submit</button>
           </div>
