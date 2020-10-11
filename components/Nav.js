@@ -13,6 +13,7 @@ export default class TheNav extends Component {
     super(props);
     this.state = {
       signedIn: false,
+      isActive: false,
     };
   }
 
@@ -50,33 +51,38 @@ export default class TheNav extends Component {
   render() {
     return (
       <nav className="navbar" role="navigation" aria-label="main navigation">
-        <div className="navbar-brand">
+        <div className="navbar-brand is-active">
+          <Link href="/">
+            <a className="navbar-item">Home</a>
+          </Link>
+
+          {this.state.signedIn ? (
+            <Link href="/create">
+              <a className="navbar-item">Log Pushup</a>
+            </Link>
+          ) : null}
           <a
             role="button"
             className="navbar-burger burger"
             aria-label="menu"
             aria-expanded="false"
             data-target="navbarBasicExample"
+            onClick={() => {
+              this.setState({ isActive: !this.state.isActive });
+            }}
+            className={`navbar-burger burger ${
+              this.state.isActive ? 'is-active' : ''
+            }`}
           >
             <span aria-hidden="true" />
             <span aria-hidden="true" />
             <span aria-hidden="true" />
           </a>
         </div>
-
-        <div id="navbarBasicExample" className="navbar-menu">
-          <div className="navbar-start">
-            <Link href="/">
-              <a className="navbar-item">Home</a>
-            </Link>
-
-            {this.state.signedIn ? (
-              <Link href="/create">
-                <a className="navbar-item">Log Pushup</a>
-              </Link>
-            ) : null}
-          </div>
-
+        <div
+          id="navbarBasicExample"
+          className={`navbar-menu ${this.state.isActive ? 'is-active' : ''}`}
+        >
           <div className="navbar-end">
             <div className="navbar-item">
               <div className="buttons">
