@@ -1,5 +1,4 @@
 import TimeAgo from 'react-timeago';
-const stc = require('string-to-color');
 var ColorHash = require('color-hash');
 
 export default (props) => {
