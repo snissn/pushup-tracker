@@ -3,15 +3,19 @@ import { useForm } from "react-hook-form";
 import base from "../lib/db";
 import { auth } from "../lib/db";
 import * as firebase from "firebase";
-
-import * as NumericInput from "react-numeric-input";
-
 import { useRouter } from "next/router";
 
 export default function Create() {
   const router = useRouter();
 
-  const { register, handleSubmit, watch, errors, setValue } = useForm();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    errors,
+    setValue,
+    getValues,
+  } = useForm({ defaultValues: { count: 0 } });
   const onSubmit = (data) => {
     data["userId"] = window.user.uid;
     data["createdAt"] = firebase.firestore.FieldValue.serverTimestamp();
@@ -44,48 +48,63 @@ export default function Create() {
         <div className="field">
           <label className="label">Count</label>
           <div className="control is-fullwidth">
-            <NumericInput
-              className="input is-fullwidth"
-              value={1}
-              min={1}
-              style={{
-                wrap: {
-                  boxShadow: "0 0 1px 1px #fff inset, 1px 1px 5px -1px #000",
-                  padding: "2px 40px 2px 2px",
-                  borderRadius: "6px 3px 3px 6px",
-                  fontSize: 28,
-                },
-                span: {
-                  width: "100% !important",
-                },
-                plus: { width: 0 },
-                input: {
-                  borderRadius: "4px 2px 2px 4px",
-                  border: "1px solid #ccc",
-                  display: "block",
-                  fontWeight: 400,
-                  textShadow: "1px 1px 1px rgba(0, 0, 0, 0.1)",
-                  "padding-left": "16px !important",
-                },
-                "input:focus": {
-                  border: "1px inset #69C",
-                  outline: "none",
-                },
-                arrowUp: {},
-                arrowDown: {},
-              }}
-              onChange={(val) => {
-                setValue("count", val);
-              }}
-            />
             <input
-              className="input"
+              className="input is-large"
               name="count"
-              type="hidden"
               ref={register({ required: true })}
             />
             {/* errors will return when field validation fails  */}
             {errors.count && <span>This field is required</span>}{" "}
+          </div>
+        </div>
+        <div className="field">
+          <div className="control  mt-4">
+            <button
+              onClick={(e) => {
+                setValue("count", parseInt(getValues("count")) + 5);
+                e.preventDefault();
+                return false;
+              }}
+              className="button is-link m-1"
+            >
+              +5
+            </button>
+            <button
+              onClick={(e) => {
+                setValue("count", parseInt(getValues("count")) + 1);
+                e.preventDefault();
+                return false;
+              }}
+              className="button is-link m-1"
+            >
+              +1
+            </button>
+            <button
+              onClick={(e) => {
+                setValue(
+                  "count",
+                  Math.max(0, parseInt(getValues("count")) - 1)
+                );
+                e.preventDefault();
+                return false;
+              }}
+              className="button is-link m-1"
+            >
+              -1
+            </button>
+            <button
+              onClick={(e) => {
+                setValue(
+                  "count",
+                  Math.max(0, parseInt(getValues("count")) - 5)
+                );
+                e.preventDefault();
+                return false;
+              }}
+              className="button is-link m-1"
+            >
+              -5
+            </button>
           </div>
         </div>
 
