@@ -8,26 +8,6 @@ import Select from "react-select";
 
 export default function Create() {
   const router = useRouter();
-
-  const {
-    register,
-    handleSubmit,
-    watch,
-    errors,
-    setValue,
-    getValues,
-  } = useForm({ defaultValues: { count: 0 } });
-  const onSubmit = (data) => {
-    data["userId"] = window.user.uid;
-    data["createdAt"] = firebase.firestore.FieldValue.serverTimestamp();
-
-    console.log("data", data);
-
-    base.addToCollection("pushups", data).then(function () {
-      router.push("/");
-    });
-  };
-
   const options = [
     { value: "Pushup", label: "Push Ups" },
     { value: "Lizard Pushup", label: "Lizard Push Ups" },
@@ -36,6 +16,31 @@ export default function Create() {
     { value: "Sun Salutation A", label: "Sun Salutation A" },
     { value: "Sun Salutation B", label: "Sun Salutation B" },
   ];
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    errors,
+    setValue,
+    getValues,
+  } = useForm({
+    defaultValues: {
+      count: 0,
+      activity: options[0].value,
+    },
+  });
+
+  const onSubmit = (data) => {
+    data["userId"] = window.user.uid;
+    data["createdAt"] = firebase.firestore.FieldValue.serverTimestamp();
+
+    console.log("data", data);
+    /*
+    base.addToCollection("pushups", data).then(function () {
+      router.push("/");
+    });*/
+  };
 
   return (
     <div className="container" style={{ maxWidth: 480 }}>
@@ -58,6 +63,14 @@ export default function Create() {
               defaultValue={options[0]}
               blurInputOnSelect={true}
               isSearchable={false}
+              onChange={(data) => {
+                setValue("activity", data["value"]);
+              }}
+            />
+            <input
+              name="activity"
+              type="hidden"
+              ref={register({ required: true })}
             />
           </div>
         </div>
