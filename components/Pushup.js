@@ -1,5 +1,6 @@
-import TimeAgo from 'react-timeago';
-var ColorHash = require('color-hash');
+import TimeAgo from "react-timeago";
+var ColorHash = require("color-hash");
+import UserInfo from "./UserInfo.js";
 
 export default (props) => {
   var colorHash = new ColorHash({});
@@ -8,26 +9,30 @@ export default (props) => {
   const background_gradient =
     `linear-gradient(` +
     colorHash.hex(pushup.userId) +
-    '33,' +
+    "33," +
     colorHash.hex(pushup.userId) +
-    ')';
+    ")";
   return (
     <section
       className="hero mb-6"
       style={{
-        'background-image': background_gradient,
+        backgroundImage: background_gradient,
       }}
     >
-      <div className="hero-body">
-        <div className="container">
-          <h1 className="title">
-            {pushup.count} {pushup.activity}s
-          </h1>
+      <div className="columns hero-body">
+        <div className="column container is-2">
+          <UserInfo userId={pushup.userId} />
+        </div>
+        <div className="column">
+          <div className="content">
+            <h1 className="title">
+              {pushup.count} {pushup.activity}s
+            </h1>
 
-          <h2 className="subtitle">
-            <TimeAgo date={pushup.createdAt.toDate()} />
-          </h2>
-          <div>user: {pushup.userId}</div>
+            <h2 className="subtitle">
+              <TimeAgo date={pushup.createdAt.toDate()} />
+            </h2>
+          </div>
         </div>
       </div>
     </section>
