@@ -12,6 +12,7 @@ export default function Create() {
     { value: "Pushup", label: "Push Ups" },
     { value: "Lizard Pushup", label: "Lizard Push Ups" },
     { value: "Archer Pushup", label: "Archer Push Ups" },
+    { value: "Flying Crow Pushup", label: "Flying Crow Pushups" },
     { value: "One Handed Pushup", label: "One Handed Push Ups" },
     { value: "Sun Salutation A", label: "Sun Salutation A" },
     { value: "Sun Salutation B", label: "Sun Salutation B" },
