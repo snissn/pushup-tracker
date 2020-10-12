@@ -11,13 +11,10 @@ $input-shadow: none;
 
 @import "../../node_modules/bulma/bulma.sass";
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP");
-* {
+body {
   font-family: "Noto Sans JP";
 }
 
-.react-numeric-input {
-  width: 100%;
-}
 .navbar {
   display: block;
 }

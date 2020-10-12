@@ -4,6 +4,7 @@ import base from "../lib/db";
 import { auth } from "../lib/db";
 import * as firebase from "firebase";
 import { useRouter } from "next/router";
+import Select from "react-select";
 
 export default function Create() {
   const router = useRouter();
@@ -27,6 +28,15 @@ export default function Create() {
     });
   };
 
+  const options = [
+    { value: "Pushup", label: "Push Ups" },
+    { value: "Lizard Pushup", label: "Lizard Push Ups" },
+    { value: "Archer Pushup", label: "Archer Push Ups" },
+    { value: "One Handed Pushup", label: "One Handed Push Ups" },
+    { value: "Sun Salutation A", label: "Sun Salutation A" },
+    { value: "Sun Salutation B", label: "Sun Salutation B" },
+  ];
+
   return (
     <div className="container" style={{ maxWidth: 480 }}>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -34,15 +44,21 @@ export default function Create() {
 
         <div className="field">
           <label className="label">Activity</label>
-          <div className="select is-large is-fullwidth">
-            <select name="activity" ref={register}>
-              <option value="Pushup">Push Ups</option>
-              <option value="Lizard Pushup">Lizard Push Ups</option>
-              <option value="Archer Pushup">Archer Push Ups</option>
-              <option value="One Handed Pushup">One Handed Push Ups</option>
-              <option value="Sun Salutation A">Sun Salutation A</option>
-              <option value="Sun Salutation B">Sun Salutation B</option>
-            </select>
+          <div className="input select is-large is-fullwidth">
+            <Select
+              styles={{
+                control: () => ({}),
+                indicatorsContainer: () => ({
+                  display: "none",
+                }),
+                valueContainer: () => ({}),
+              }}
+              options={options}
+              ref={register}
+              defaultValue={options[0]}
+              blurInputOnSelect={true}
+              isSearchable={false}
+            />
           </div>
         </div>
 
