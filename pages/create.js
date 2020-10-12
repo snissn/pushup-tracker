@@ -35,11 +35,9 @@ export default function Create() {
     data["userId"] = window.user.uid;
     data["createdAt"] = firebase.firestore.FieldValue.serverTimestamp();
 
-    console.log("data", data);
-    /*
     base.addToCollection("pushups", data).then(function () {
       router.push("/");
-    });*/
+    });
   };
 
   return (
