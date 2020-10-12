@@ -11,7 +11,13 @@ $input-shadow: none;
 
 @import "../../node_modules/bulma/bulma.sass";
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP");
-body {
+*,
+body,
+button,
+input,
+optgroup,
+select,
+textarea {
   font-family: "Noto Sans JP";
 }
 
