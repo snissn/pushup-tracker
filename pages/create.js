@@ -37,8 +37,10 @@ export default function Create() {
           <div className="select is-large is-fullwidth">
             <select name="activity" ref={register}>
               <option value="Pushup">Push Ups</option>
-              <option value="Sun-Salutation-A">Sun Salutation A</option>
-              <option value="Sun-Salutation-B">Sun Salutation B</option>
+              <option value="Lizard Pushup">Lizard Push Ups</option>
+              <option value="Archer Pushup">Archer Push Ups</option>
+              <option value="Sun Salutation A">Sun Salutation A</option>
+              <option value="Sun Salutation B">Sun Salutation B</option>
             </select>
           </div>
         </div>
