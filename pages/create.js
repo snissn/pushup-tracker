@@ -39,6 +39,7 @@ export default function Create() {
               <option value="Pushup">Push Ups</option>
               <option value="Lizard Pushup">Lizard Push Ups</option>
               <option value="Archer Pushup">Archer Push Ups</option>
+              <option value="One Handed Pushup">One Handed Push Ups</option>
               <option value="Sun Salutation A">Sun Salutation A</option>
               <option value="Sun Salutation B">Sun Salutation B</option>
             </select>
