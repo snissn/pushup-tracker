@@ -14,6 +14,9 @@ export default class UserInfo extends Component {
   }
 
   componentDidMount() {
+    if (!this.props.userId) {
+      return;
+    }
     fetchDocumentFromCollectionByFieldName({
       value: this.props.userId,
       collectionName: "users",
