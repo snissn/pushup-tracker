@@ -7,6 +7,7 @@ import {
 
 export default (props) => {
   const [user, setUser] = useState(null);
+  const [mount, setMount] = useState(false);
 
   useEffect(() => {
     if (!props.userId) {
@@ -17,8 +18,9 @@ export default (props) => {
       collectionName: "users",
       fieldName: "uid",
     }).then((user) => {
-      if (!isEmpty(user)) {
+      if (!mount) {
         setUser(user);
+        setMount(true);
       }
     });
   });
