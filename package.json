@@ -14,6 +14,7 @@
     "bulma": "^0.9.1",
     "color-hash": "^1.0.3",
     "firebase": "^7.23.0",
+    "mime-types": "^2.1.27",
     "next": "9.5.4",
     "node-sass": "^4.14.1",
     "re-base": "^4.0.0",

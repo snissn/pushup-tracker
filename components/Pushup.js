@@ -1,11 +1,19 @@
 import TimeAgo from "react-timeago";
 var ColorHash = require("color-hash");
 import UserInfo from "./UserInfo.js";
+var mime = require("mime-types");
 
 export default (props) => {
   var colorHash = new ColorHash({});
 
   const pushup = props.pushup;
+  let media_type = "";
+  if (pushup.url) {
+    try {
+      media_type = mime.lookup(pushup.url.split("?")[0]).split("/")[0];
+    } catch (e) {}
+  }
+
   const background_gradient =
     `linear-gradient(` +
     colorHash.hex(pushup.userId) +
@@ -33,7 +41,12 @@ export default (props) => {
               <TimeAgo date={pushup.createdAt.toDate()} />
             </h2>
             <div className="content">
-              {pushup.url && <img src={pushup.url} />}
+              {media_type == "image" && (
+                <img src={pushup.url} width="400" height="300" />
+              )}
+              {media_type == "video" && (
+                <video controls src={pushup.url} width="400" height="300" />
+              )}
             </div>
           </div>
         </div>
