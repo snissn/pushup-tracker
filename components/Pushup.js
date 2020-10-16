@@ -19,14 +19,14 @@ export default (props) => {
         backgroundImage: background_gradient,
       }}
     >
-      <div className="columns hero-body mb-4">
-        <div className="column container is-2">
+      <div className="columns is-gapless hero-body mb-4">
+        <div className="column has-text-centered	">
           <UserInfo userId={pushup.userId} />
         </div>
-        <div className="column">
+        <div className="column is-10">
           <div className="content ">
             <h1 className="title ">
-              {pushup.count} {pushup.activity}s
+              {pushup.count} {pushup.side} {pushup.activity}s
             </h1>
 
             <h2 className="subtitle">
