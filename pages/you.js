@@ -6,7 +6,6 @@ import { auth, firebase, firestore } from "../lib/db";
 import { useRouter } from "next/router";
 
 export default (props) => {
-  const [_isMounted, setMount] = useState(false);
   const [pushups, setPushups] = useState([]);
   const [user, setUser] = useState({});
   const [ref, setRef] = useState({});
@@ -16,7 +15,6 @@ export default (props) => {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       setUser(user);
-      setMount(true);
       if (!router.query.user_id) {
         return;
       }
@@ -43,13 +41,10 @@ export default (props) => {
           })
       );
     });
+    return function () {
+      base.removeBinding(ref);
+    };
   }, [user]);
-
-  function componentWillUnmount() {
-    setMount(false);
-    base.removeBinding(ref);
-    setRef({});
-  }
 
   // show activity
   // show profile

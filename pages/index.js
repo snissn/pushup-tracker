@@ -1,40 +1,20 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import base from "../lib/db";
+import { fetchCollectionDocs } from "../lib/utility.js";
 import PushupList from "../components/PushupList";
 
-export default class Index extends Component {
-  _isMounted = false;
+export default (props) => {
+  const [isMounted, setMounted] = useState(false);
+  const [pushups, setPushups] = useState([]);
 
-  constructor(props) {
-    super(props);
-    this.state = { pushups: [] };
-  }
+  useEffect(() => {
+    fetchCollectionDocs("pushups").then((pushups) => {
+      if (!isMounted) {
+        setPushups(pushups);
+        setMounted(true);
+      }
+    });
+  });
 
-  componentDidMount() {
-    this._isMounted = true;
-    this.ref = base
-      .get("pushups", {
-        context: this,
-        withIds: true,
-        query: (ref) => ref.orderBy("createdAt", "desc"),
-      })
-      .then((pushups) => {
-        if (this._isMounted) {
-          console.log("pushups", pushups);
-          this.setState({ pushups });
-        }
-      })
-      .catch((error) => {
-        console.log(`There was an error on fetching pushups ${error}`);
-      });
-  }
-
-  componentWillUnmount() {
-    this._isMounted = false;
-    base.removeBinding(this.ref);
-  }
-
-  render() {
-    return <PushupList pushups={this.state.pushups} />;
-  }
-}
+  return <PushupList pushups={pushups} />;
+};
