@@ -45,7 +45,15 @@ export default (props) => {
                 <img src={pushup.url} width="400" height="300" />
               )}
               {media_type == "video" && (
-                <video controls src={pushup.url} width="400" height="300" />
+                <video
+                  controls
+                  width="400"
+                  height="300"
+                  controls="controls"
+                  preload="metadata"
+                >
+                  <source src={pushup.url + "#t=0.5"} type="video/mp4" />
+                </video>
               )}
             </div>
           </div>
