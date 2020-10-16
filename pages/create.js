@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useState } from "react";
 import { useForm } from "react-hook-form";
 import base from "../lib/db";
 import { auth } from "../lib/db";
@@ -10,10 +10,18 @@ export default function Create() {
   const router = useRouter();
   const options = [
     { value: "Pushup", label: "Push Ups" },
-    { value: "Lizard Pushup", label: "Lizard Push Ups", sides: true },
-    { value: "Archer Pushup", label: "Archer Push Ups", sides: true },
-    { value: "Flying Crow Pushup", label: "Flying Crow Pushups", sides: true },
-    { value: "One Handed Pushup", label: "One Handed Push Ups", sides: true },
+    { value: "Lizard Pushup", label: "Lizard Push Ups", showSides: true },
+    { value: "Archer Pushup", label: "Archer Push Ups", showSides: true },
+    {
+      value: "Flying Crow Pushup",
+      label: "Flying Crow Pushups",
+      showSides: true,
+    },
+    {
+      value: "One Handed Pushup",
+      label: "One Handed Push Ups",
+      showSides: true,
+    },
     { value: "Sun Salutation A", label: "Sun Salutation A" },
     { value: "Sun Salutation B", label: "Sun Salutation B" },
   ];
@@ -37,6 +45,8 @@ export default function Create() {
       showSides: false,
     },
   });
+
+  const [showSides, setSide] = useState(false);
 
   const onSubmit = (data) => {
     data["userId"] = window.user.uid;
@@ -70,6 +80,7 @@ export default function Create() {
               isSearchable={false}
               onChange={(data) => {
                 setValue("activity", data["value"]);
+                setSide(!!data.showSides);
               }}
             />
             <input
@@ -80,21 +91,34 @@ export default function Create() {
           </div>
         </div>
 
-        <div className="field">
-          <label className="label">Side</label>
-          <div className="input radio is-large is-fullwidth">
-            <div className="control">
-              <label className="radio">
-                <input type="radio" name="answer" />
-                Left
-              </label>
-              <label className="radio">
-                <input type="radio" name="answer" />
-                Right
-              </label>
+        {showSides && (
+          <div className="field">
+            <label className="label">Side</label>
+            <div className="input radio is-large is-fullwidth">
+              <div className="control">
+                <label className="button is-link">
+                  <input
+                    checked
+                    type="radio"
+                    name="side"
+                    value="Left"
+                    ref={register}
+                  />
+                  Left
+                </label>
+                <label className="button is-link ml-4">
+                  <input
+                    type="radio"
+                    name="side"
+                    value="Right"
+                    ref={register}
+                  />
+                  Right
+                </label>
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* include validation with required or other standard HTML validation rules */}
 
@@ -162,11 +186,14 @@ export default function Create() {
         </div>
 
         <div className="field is-grouped ">
-          <div className="control is-primary is-link  mt-4">
-            <button className="button is-primary">Submit</button>
+          <div className="control    mt-4">
+            <button className="button is-link">Submit</button>
           </div>
           <div className="control  mt-4">
-            <button onClick={() => router.push("/")} className="button is-link">
+            <button
+              onClick={() => router.push("/")}
+              className="button is-danger"
+            >
               Cancel
             </button>
           </div>
