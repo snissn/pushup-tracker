@@ -52,9 +52,9 @@ export default function Create() {
   const [showSides, setSide] = useState(false);
 
   const onSubmit = (data) => {
+    console.log("DATA---", data);
     data["userId"] = window.user.uid;
     data["createdAt"] = firebase.firestore.FieldValue.serverTimestamp();
-
     base.addToCollection("pushups", data).then(function () {
       router.push("/");
     });
