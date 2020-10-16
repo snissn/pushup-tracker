@@ -36,19 +36,18 @@ export default (props) => {
             alt="User profile photo"
             className="is-rounded"
           />
-          <p className="mt-4 is-primary">
-            <Link
-              href={{
-                pathname: "/you",
-                query: { user_id: user.uid },
-              }}
-            >
-              <a className="is-size-4 has-text-centered	has-text-weight-bold	">
-                {user.name}
-              </a>
-            </Link>
-          </p>
         </figure>
+
+        <p className="mt-4 is-primary">
+          <Link
+            href={{
+              pathname: "/you",
+              query: { user_id: user.uid },
+            }}
+          >
+            <a className="is-size-4	has-text-weight-bol">{user.name}</a>
+          </Link>
+        </p>
       </div>
     </Fragment>
   );

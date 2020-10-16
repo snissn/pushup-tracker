@@ -20,7 +20,7 @@ export default (props) => {
       }}
     >
       <div className="columns is-gapless hero-body mb-4">
-        <div className="column has-text-centered	">
+        <div className="column mb-4">
           <UserInfo userId={pushup.userId} />
         </div>
         <div className="column is-10">
