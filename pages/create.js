@@ -6,6 +6,8 @@ import * as firebase from "firebase";
 import { useRouter } from "next/router";
 import Select from "react-select";
 
+import ImageUpload from "../components/ImageUpload.js";
+
 export default function Create() {
   const router = useRouter();
   const options = [
@@ -43,6 +45,7 @@ export default function Create() {
       count: 0,
       activity: options[0].value,
       showSides: false,
+      url: null,
     },
   });
 
@@ -88,6 +91,7 @@ export default function Create() {
               type="hidden"
               ref={register({ required: true })}
             />
+            <input name="url" type="hidden" ref={register} />
           </div>
         </div>
 
@@ -184,11 +188,16 @@ export default function Create() {
             </button>
           </div>
         </div>
-
+        <div className="field is-grouped ">
+          <div className="control    mt-4">
+            <ImageUpload data={{ register, setValue }} />
+          </div>
+        </div>
         <div className="field is-grouped ">
           <div className="control    mt-4">
             <button className="button is-link">Submit</button>
           </div>
+
           <div className="control  mt-4">
             <button
               onClick={() => router.push("/")}

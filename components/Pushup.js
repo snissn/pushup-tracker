@@ -32,6 +32,9 @@ export default (props) => {
             <h2 className="subtitle">
               <TimeAgo date={pushup.createdAt.toDate()} />
             </h2>
+            <div className="content">
+              {pushup.url && <img src={pushup.url} />}
+            </div>
           </div>
         </div>
       </div>
