@@ -1,57 +1,67 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import base from "../lib/db";
 import PushupList from "../components/PushupList";
 import UserInfo from "../components/UserInfo";
 import { auth, firebase, firestore } from "../lib/db";
+import { useRouter } from "next/router";
 
-export default class Index extends Component {
-  _isMounted = false;
+export default (props) => {
+  const [_isMounted, setMount] = useState(false);
+  const [pushups, setPushups] = useState([]);
+  const [user, setUser] = useState({});
+  const [ref, setRef] = useState({});
 
-  constructor(props) {
-    super(props);
-    console.log("props", props);
-    this.state = { pushups: [], user: {} };
-  }
+  const router = useRouter();
 
-  componentDidMount() {
+  useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      this.setState({ user: user });
+      setUser(user);
+      setMount(true);
+      if (!router.query.user_id) {
+        return;
+      }
+      console.log("Router", router.query.user_id);
+      setRef(
+        base
+          .get("pushups", {
+            context: this,
+            withIds: true,
+            query: (ref) =>
+              ref
+                .where("userId", "==", router.query.user_id)
+                .limit(500)
+                .orderBy("createdAt", "desc"),
+          })
+          .then((pushups) => {
+            if (true) {
+              console.log("pushups", pushups);
+              setPushups(pushups);
+            }
+          })
+          .catch((error) => {
+            console.log(`There was an error on fetching pushups ${error}`);
+          })
+      );
     });
+  }, [user]);
 
-    this._isMounted = true;
-    this.ref = base
-      //.where("userId", "==", this.state.user.uid)
-      .get("pushups", {
-        context: this,
-        withIds: true,
-        query: (ref) => ref.orderBy("createdAt", "desc"),
-        where: [["userId", "==", this.state.user.uid]],
-      })
-      .then((pushups) => {
-        if (this._isMounted) {
-          console.log("pushups", pushups);
-          this.setState({ pushups });
-        }
-      })
-      .catch((error) => {
-        console.log(`There was an error on fetching pushups ${error}`);
-      });
+  function componentWillUnmount() {
+    setMount(false);
+    base.removeBinding(ref);
+    setRef({});
   }
 
-  componentWillUnmount() {
-    this._isMounted = false;
-    base.removeBinding(this.ref);
-  }
-
-  render() {
-    // show activity
-    // show profile
-    // option to edit profile
-    return (
-      <div>
-        <UserInfo user={this.state.user.uid} />
-        <PushupList pushups={this.state.pushups} />
+  // show activity
+  // show profile
+  // option to edit profile
+  return (
+    <div className=" columns">
+      <div className="column is-1">
+        <UserInfo userId={router.query.user_id} />
       </div>
-    );
-  }
-}
+      <div className="column is-11">
+        <PushupList pushups={pushups} />
+      </div>
+    </div>
+  );
+};

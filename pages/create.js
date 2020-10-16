@@ -10,12 +10,17 @@ export default function Create() {
   const router = useRouter();
   const options = [
     { value: "Pushup", label: "Push Ups" },
-    { value: "Lizard Pushup", label: "Lizard Push Ups" },
-    { value: "Archer Pushup", label: "Archer Push Ups" },
-    { value: "Flying Crow Pushup", label: "Flying Crow Pushups" },
-    { value: "One Handed Pushup", label: "One Handed Push Ups" },
+    { value: "Lizard Pushup", label: "Lizard Push Ups", sides: true },
+    { value: "Archer Pushup", label: "Archer Push Ups", sides: true },
+    { value: "Flying Crow Pushup", label: "Flying Crow Pushups", sides: true },
+    { value: "One Handed Pushup", label: "One Handed Push Ups", sides: true },
     { value: "Sun Salutation A", label: "Sun Salutation A" },
     { value: "Sun Salutation B", label: "Sun Salutation B" },
+  ];
+
+  const sides = [
+    { value: "left", label: "Left" },
+    { value: "right", label: "Right" },
   ];
 
   const {
@@ -29,6 +34,7 @@ export default function Create() {
     defaultValues: {
       count: 0,
       activity: options[0].value,
+      showSides: false,
     },
   });
 
@@ -71,6 +77,22 @@ export default function Create() {
               type="hidden"
               ref={register({ required: true })}
             />
+          </div>
+        </div>
+
+        <div className="field">
+          <label className="label">Side</label>
+          <div className="input radio is-large is-fullwidth">
+            <div className="control">
+              <label className="radio">
+                <input type="radio" name="answer" />
+                Left
+              </label>
+              <label className="radio">
+                <input type="radio" name="answer" />
+                Right
+              </label>
+            </div>
           </div>
         </div>
 

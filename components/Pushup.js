@@ -19,13 +19,13 @@ export default (props) => {
         backgroundImage: background_gradient,
       }}
     >
-      <div className="columns hero-body">
+      <div className="columns hero-body mb-4">
         <div className="column container is-2">
           <UserInfo userId={pushup.userId} />
         </div>
         <div className="column">
-          <div className="content">
-            <h1 className="title">
+          <div className="content ">
+            <h1 className="title ">
               {pushup.count} {pushup.activity}s
             </h1>
 
