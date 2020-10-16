@@ -63,7 +63,7 @@ export default (props) => {
             onChange={handleChange}
             ref={props.data.register}
           />
-          <span className="file-cta has-background-primary">
+          <span className="file-cta has-background-link has-text-white">
             <span className="file-icon">
               <i className="fas fa-upload "></i>
             </span>
