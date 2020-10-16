@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from 'react';
-import Link from 'next/link';
-import Router from 'next/router';
-import getConfig from 'next/config';
-import { auth } from '../lib/db';
+import React, { Component, Fragment } from "react";
+import Link from "next/link";
+import Router from "next/router";
+import getConfig from "next/config";
+import { auth } from "../lib/db";
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -24,13 +24,13 @@ export default class TheNav extends Component {
         signedIn: false,
       });
     }
-    Router.push('/');
+    Router.push("/");
   };
 
   componentDidMount() {
     this._isMounted = true;
     auth.onAuthStateChanged((user) => {
-      console.log('USER', user);
+      console.log("USER", user);
       if (user) {
         window.user = user;
         // signed in
@@ -49,15 +49,15 @@ export default class TheNav extends Component {
 
   render() {
     return (
-      <nav className="navbar" role="navigation" aria-label="main navigation">
-        <div className="navbar-brand is-active is-pulled-left">
+      <nav className="navbar " role="navigation" aria-label="main navigation">
+        <div className="navbar-brand is-pulled-left">
           <Link href="/">
-            <a className="navbar-item">Home</a>
+            <a className="navbar-item button m-1">Home</a>
           </Link>
 
           {this.state.signedIn ? (
             <Link href="/create">
-              <a className="navbar-item">Log Pushup</a>
+              <a className="navbar-item button m-1">Log Pushup</a>
             </Link>
           ) : null}
         </div>
