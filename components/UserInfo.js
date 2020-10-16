@@ -43,7 +43,9 @@ export default (props) => {
                 query: { user_id: user.uid },
               }}
             >
-              <a>{user.name}</a>
+              <a className="is-size-4 has-text-centered	has-text-weight-bold	">
+                {user.name}
+              </a>
             </Link>
           </p>
         </figure>
