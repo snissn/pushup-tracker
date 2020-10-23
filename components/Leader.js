@@ -7,11 +7,9 @@ const deepSort = require(`deep-sort`);
 var mime = require("mime-types");
 
 export default (props) => {
-  console.log("LE", props);
   var colorHash = new ColorHash({});
 
   const leader = props.leader;
-  console.log("Pushup", leader);
   const userId = leader.userId;
   const background_gradient =
     `linear-gradient(` +
@@ -20,7 +18,6 @@ export default (props) => {
     colorHash.hex(leader.userId) +
     ")";
   delete leader.userId;
-  console.log(leader);
   const values = [];
   Object.entries(leader).forEach((action) => {
     const key = action[0];
@@ -40,6 +37,7 @@ export default (props) => {
       <div className="columns is-gapless hero-body mb-4">
         <div className="column mb-4">
           <UserInfo userId={userId} />
+          <h2>Ranking: {props.index}</h2>
         </div>
         <div className="column is-10">
           <div className="content ">
