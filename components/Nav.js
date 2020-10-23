@@ -54,6 +54,9 @@ export default class TheNav extends Component {
           <Link href="/">
             <a className="navbar-item button m-1">Home</a>
           </Link>
+          <Link href="/leaderboard">
+            <a className="navbar-item button m-1">Leaderboard</a>
+          </Link>
 
           {this.state.signedIn ? (
             <Link href="/create">

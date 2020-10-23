@@ -11,8 +11,10 @@
     "deploy": "npm run build && npm run export"
   },
   "dependencies": {
+    "array-sort": "^1.0.0",
     "bulma": "^0.9.1",
     "color-hash": "^1.0.3",
+    "deep-sort": "^1.0.4",
     "firebase": "^7.23.0",
     "mime-types": "^2.1.27",
     "next": "9.5.4",
