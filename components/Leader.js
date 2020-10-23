@@ -26,6 +26,7 @@ export default (props) => {
 
     values.push(mymap);
   });
+  values.sort((a, b) => b.value - a.value);
 
   return (
     <section
