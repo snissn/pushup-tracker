@@ -1,12 +1,12 @@
-import React, { Component, Fragment } from 'react';
-import Head from 'next/head';
-import getConfig from 'next/config';
-import Router from 'next/router';
-import { auth, firebase, firestore } from '../lib/db';
+import React, { Component, Fragment } from "react";
+import Head from "next/head";
+import getConfig from "next/config";
+import Router from "next/router";
+import { auth, firebase, firestore } from "../lib/db";
 import {
   fetchDocumentFromCollectionByFieldName,
   isEmpty,
-} from '../lib/utility';
+} from "../lib/utility";
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -22,7 +22,7 @@ export default class signin extends Component {
     this._isMounted = true;
     auth.onAuthStateChanged((user) => {
       if (user) {
-        Router.push('/');
+        Router.push("/");
       } else if (this._isMounted) {
         this.setState({ hideContent: false });
       }
@@ -50,22 +50,22 @@ export default class signin extends Component {
   authHandler = (authUser) => {
     // check if user exists in users collection
     fetchDocumentFromCollectionByFieldName({
-      collectionName: 'users',
-      fieldName: 'uid',
+      collectionName: "users",
+      fieldName: "uid",
       value: authUser.uid,
     }).then((foundUser) => {
       if (isEmpty(foundUser)) {
         // it is an empty object
         // add the user to users collection and go to home page
         firestore
-          .collection('users')
+          .collection("users")
           .add(authUser)
           .then((createdUser) => {
             localStorage.setItem(
               publicRuntimeConfig.localStorageUserId,
               createdUser.id
             );
-            Router.push('/');
+            Router.push("/");
           });
       } else {
         // if yes, go to home page
@@ -73,7 +73,7 @@ export default class signin extends Component {
           publicRuntimeConfig.localStorageUserId,
           foundUser.id
         );
-        Router.push('/');
+        Router.push("/");
       }
     });
   };
@@ -96,7 +96,7 @@ export default class signin extends Component {
           <div className="column is-one-third is-offset-one-third has-text-centered button-container">
             <button
               className="button google is-fullwidth"
-              onClick={() => this.authenticate('Google')}
+              onClick={() => this.authenticate("Google")}
             >
               <span className="icon">
                 <i className="fab fa-google" />
@@ -106,7 +106,7 @@ export default class signin extends Component {
 
             <button
               className="button facebook is-fullwidth"
-              onClick={() => this.authenticate('Facebook')}
+              onClick={() => this.authenticate("Facebook")}
             >
               <span className="icon">
                 <i className="fab fa-facebook" />
@@ -116,7 +116,7 @@ export default class signin extends Component {
 
             <button
               className="button twitter is-fullwidth"
-              onClick={() => this.authenticate('Twitter')}
+              onClick={() => this.authenticate("Twitter")}
             >
               <span className="icon">
                 <i className="fab fa-twitter" />
@@ -126,7 +126,7 @@ export default class signin extends Component {
 
             <button
               className="button github is-fullwidth"
-              onClick={() => this.authenticate('Github')}
+              onClick={() => this.authenticate("Github")}
             >
               <span className="icon">
                 <i className="fab fa-github" />

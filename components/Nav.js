@@ -71,9 +71,9 @@ export default class TheNav extends Component {
                 <strong>Sign out</strong>
               </a>
             ) : (
-              <Link href="/signin">
+              <Link href="/login">
                 <a className="button is-primary">
-                  <strong>Sign in</strong>
+                  <strong>Login</strong>
                 </a>
               </Link>
             )}
