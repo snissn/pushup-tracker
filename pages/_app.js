@@ -11,7 +11,9 @@ function MyApp({ Component, pageProps }) {
       ></script>
 
       <Nav></Nav>
-      <section className="section ">
+      <div style={{ clear: "both" }}></div>
+
+      <section style={{ clear: "both" }}>
         <Component {...pageProps} />
       </section>
     </>

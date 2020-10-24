@@ -50,20 +50,29 @@ export default class TheNav extends Component {
   render() {
     return (
       <nav className="navbar " role="navigation" aria-label="main navigation">
-        <div className="navbar-brand is-pulled-left">
+        <div className="navbar-item is-pulled-left">
           <Link href="/">
-            <a className="navbar-item button m-1">Home</a>
+            <a className=" button ">Home</a>
           </Link>
+        </div>
+        <div className="navbar-item is-pulled-left">
+          <Link href="/feed">
+            <a className=" button ">Feed</a>
+          </Link>
+        </div>
+        <div className="navbar-item is-pulled-left">
           <Link href="/leaderboard">
-            <a className="navbar-item button m-1">Leaderboard</a>
+            <a className=" button ">Leaderboard</a>
           </Link>
-
+        </div>
+        <div className="navbar-item is-pulled-left">
           {this.state.signedIn ? (
             <Link href="/create">
-              <a className="navbar-item button m-1">Log Pushup</a>
+              <a className=" button ">Log Pushup</a>
             </Link>
           ) : null}
         </div>
+
         <div className="navbar-item is-pulled-right">
           <div className="buttons">
             {this.state.signedIn ? (
@@ -79,6 +88,20 @@ export default class TheNav extends Component {
             )}
           </div>
         </div>
+        {this.state.signedIn ? (
+          <div className="navbar-item is-pulled-right">
+            <div className="buttons">
+              <a
+                className="button is-info"
+                href={"/you?user_id=" + window.user.uid}
+              >
+                <strong>Your Profile</strong>
+              </a>
+            </div>
+          </div>
+        ) : (
+          <></>
+        )}
       </nav>
     );
   }

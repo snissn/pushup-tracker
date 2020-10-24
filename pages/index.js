@@ -1,20 +1,33 @@
-import React, { Component, useState, useEffect } from "react";
-import base from "../lib/db";
-import { fetchCollectionDocs } from "../lib/utility.js";
-import PushupList from "../components/PushupList";
-
 export default (props) => {
-  const [isMounted, setMounted] = useState(false);
-  const [pushups, setPushups] = useState([]);
-
-  useEffect(() => {
-    fetchCollectionDocs("pushups").then((pushups) => {
-      if (!isMounted) {
-        setPushups(pushups);
-        setMounted(true);
-      }
-    });
-  });
-
-  return <PushupList pushups={pushups} />;
+  return (
+    <div>
+      <div class="hero  is-primary is-medium  ">
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <h1 class="title">Welcome to Pushup Site!</h1>
+          </div>
+        </div>
+      </div>
+      <section class="hero is-info is-medium">
+        <div class="hero-body is-link">
+          <div class="container has-text-centered">
+            <h1 class="title">
+              Challenge yourself and the world to see how many pushups you can
+              do!
+            </h1>
+          </div>
+        </div>
+      </section>
+      <section class="hero is-primary is-medium">
+        <div class="hero-body is-link">
+          <div class="container has-text-centered">
+            <h1 class="title">
+              Do a set of pushups now, then Login to create an account and log
+              your pushup set!
+            </h1>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 };
