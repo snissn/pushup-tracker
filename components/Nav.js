@@ -68,7 +68,7 @@ export default class TheNav extends Component {
           <div className="buttons">
             {this.state.signedIn ? (
               <a className="button is-danger" onClick={this.signOut}>
-                <strong>Sign out</strong>
+                <strong>Logout</strong>
               </a>
             ) : (
               <Link href="/login">
