@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
       <Nav></Nav>
       <div style={{ clear: "both" }}></div>
 
-      <section style={{ clear: "both" }}>
+      <section className="section">
         <Component {...pageProps} />
       </section>
     </>
