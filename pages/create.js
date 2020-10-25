@@ -58,7 +58,7 @@ export default function Create() {
     data["createdAt"] = firebase.firestore.FieldValue.serverTimestamp();
     console.log("DATA---", data);
     base.addToCollection("pushups", data).then(function () {
-      router.push("/");
+      router.push("/feed");
     });
   };
 
