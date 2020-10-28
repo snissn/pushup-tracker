@@ -114,7 +114,7 @@ export default class signin extends Component {
               <span>Login with Facebook</span>
             </button>
 
-            <button
+            {/*<button
               className="button twitter is-fullwidth"
               onClick={() => this.authenticate("Twitter")}
             >
@@ -132,7 +132,7 @@ export default class signin extends Component {
                 <i className="fab fa-github" />
               </span>
               <span>Login with GitHub</span>
-            </button>
+            </button>*/}
           </div>
         </div>
         <style jsx>{`
