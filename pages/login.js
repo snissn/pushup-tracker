@@ -22,7 +22,7 @@ export default class signin extends Component {
     this._isMounted = true;
     auth.onAuthStateChanged((user) => {
       if (user) {
-        Router.push("/");
+        Router.push("/feed");
       } else if (this._isMounted) {
         this.setState({ hideContent: false });
       }
