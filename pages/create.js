@@ -12,6 +12,7 @@ export default function Create() {
   const router = useRouter();
   const options = [
     { value: "Pushup", label: "Push Ups" },
+    { value: "Sit Up", label: "Sit Ups" },
     { value: "Diamond Pushup", label: "Diamond Push Ups" },
     { value: "Lizard Pushup", label: "Lizard Push Ups", showSides: true },
     { value: "Archer Pushup", label: "Archer Push Ups", showSides: true },
