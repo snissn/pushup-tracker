@@ -1,4 +1,6 @@
 import TimeAgo from "react-timeago";
+import ReactPlayer from "react-player";
+
 var ColorHash = require("color-hash");
 import UserInfo from "./UserInfo.js";
 var mime = require("mime-types");
@@ -54,6 +56,9 @@ export default (props) => {
                 >
                   <source src={pushup.url + "#t=0.5"} type="video/mp4" />
                 </video>
+              )}
+              {pushup.activity == "Youtube Video" && pushup.url && (
+                <ReactPlayer url={pushup.url} />
               )}
             </div>
           </div>
