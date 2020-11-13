@@ -58,7 +58,7 @@ export default (props) => {
                 </video>
               )}
               {pushup.activity == "Youtube Video" && pushup.url && (
-                <ReactPlayer url={pushup.url} />
+                <ReactPlayer width="100%" url={pushup.url} />
               )}
             </div>
           </div>
