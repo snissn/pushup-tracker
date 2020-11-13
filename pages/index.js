@@ -1,6 +1,19 @@
 export default (props) => {
   return (
     <div>
+      <section class="hero is-info is-medium">
+        <div class="hero-body is-link">
+          <div class="container has-text-centered">
+            <h1 class="title">
+              Update 11/13/2020: You can now log youtube videos and sit ups on{" "}
+              <a class="link has-text-white" href="/">
+                Pushup.site
+              </a>
+              !
+            </h1>
+          </div>
+        </div>
+      </section>
       <div class="hero  is-primary is-medium  ">
         <div class="hero-body">
           <div class="container has-text-centered">
