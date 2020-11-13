@@ -7,24 +7,28 @@ import { useRouter } from "next/router";
 import Select from "react-select";
 
 import ImageUpload from "../components/ImageUpload.js";
+import ReactPlayer from "react-player";
 
 export default function Create() {
   const router = useRouter();
   const options = [
     { value: "Pushup", label: "Push Ups" },
     { value: "Sit Up", label: "Sit Ups" },
+    { value: "Youtube Video", label: "Youtube Video", showExtra: "youtube" },
+
     { value: "Diamond Pushup", label: "Diamond Push Ups" },
-    { value: "Lizard Pushup", label: "Lizard Push Ups", showSides: true },
-    { value: "Archer Pushup", label: "Archer Push Ups", showSides: true },
+
+    { value: "Lizard Pushup", label: "Lizard Push Ups", showExtra: "sides" },
+    { value: "Archer Pushup", label: "Archer Push Ups", showExtra: "sides" },
     {
       value: "Flying Crow Pushup",
       label: "Flying Crow Pushups",
-      showSides: true,
+      showExtra: "sides",
     },
     {
       value: "One Handed Pushup",
       label: "One Handed Push Ups",
-      showSides: true,
+      showExtra: "sides",
     },
     { value: "Sun Salutation A", label: "Sun Salutation A" },
     { value: "Sun Salutation B", label: "Sun Salutation B" },
@@ -46,12 +50,14 @@ export default function Create() {
     defaultValues: {
       count: 0,
       activity: options[0].value,
-      showSides: false,
+      showExtra: false,
       url: null,
     },
   });
 
-  const [showSides, setSide] = useState(false);
+  const [showExtra, setExtra] = useState(undefined);
+
+  const [displayURL, setDisplayURL] = useState(false);
 
   const onSubmit = (data) => {
     data["userId"] = window.user.uid;
@@ -86,7 +92,7 @@ export default function Create() {
               isSearchable={false}
               onChange={(data) => {
                 setValue("activity", data["value"]);
-                setSide(!!data.showSides);
+                setExtra(data.showExtra);
               }}
             />
             <input
@@ -97,8 +103,27 @@ export default function Create() {
             <input name="url" type="hidden" ref={register} />
           </div>
         </div>
+        {showExtra && showExtra == "youtube" && (
+          <div className="field">
+            <label className="label">Youtube Video URL</label>
 
-        {showSides && (
+            <div className="input radio is-large is-fullwidth">
+              <div className="control">
+                <input
+                  className="input"
+                  name="url"
+                  ref={register}
+                  onChange={(data) => {
+                    setDisplayURL(data.target.value);
+                  }}
+                />
+              </div>
+            </div>
+            {displayURL && <ReactPlayer url={displayURL} />}
+          </div>
+        )}
+
+        {showExtra && showExtra == "sides" && (
           <div className="field">
             <label className="label">Side</label>
             <div className="input radio is-large is-fullwidth">
