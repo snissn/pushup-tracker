@@ -7,14 +7,14 @@ const deepSort = require(`deep-sort`);
 var mime = require("mime-types");
 
 export default (props) => {
-  var colorHash = new ColorHash({});
+  var colorHash = new ColorHash({ lightness: 0.93, saturation: 1 });
 
   const leader = props.leader;
   const userId = leader.userId;
   const background_gradient =
     `linear-gradient(` +
     colorHash.hex(leader.userId) +
-    "33," +
+    "," +
     colorHash.hex(leader.userId) +
     ")";
   delete leader.userId;

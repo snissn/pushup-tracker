@@ -6,7 +6,7 @@ import UserInfo from "./UserInfo.js";
 var mime = require("mime-types");
 
 export default (props) => {
-  var colorHash = new ColorHash({});
+  var colorHash = new ColorHash({ lightness: 0.93, saturation: 1 });
 
   const pushup = props.pushup;
   let media_type = "";
@@ -19,7 +19,7 @@ export default (props) => {
   const background_gradient =
     `linear-gradient(` +
     colorHash.hex(pushup.userId) +
-    "33," +
+    "," +
     colorHash.hex(pushup.userId) +
     ")";
   return (
