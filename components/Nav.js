@@ -73,31 +73,27 @@ export default class TheNav extends Component {
           ) : null}
         </div>
 
-        <div className="navbar-item is-pulled-right">
-          <div className="buttons">
-            {this.state.signedIn ? (
-              <a className="button is-danger" onClick={this.signOut}>
-                <strong>Logout</strong>
+        <div className="navbar-item is-pulled-left">
+          {this.state.signedIn ? (
+            <a className="button is-danger" onClick={this.signOut}>
+              <strong>Logout</strong>
+            </a>
+          ) : (
+            <Link href="/login">
+              <a className="button is-primary">
+                <strong>Login</strong>
               </a>
-            ) : (
-              <Link href="/login">
-                <a className="button is-primary">
-                  <strong>Login</strong>
-                </a>
-              </Link>
-            )}
-          </div>
+            </Link>
+          )}
         </div>
         {this.state.signedIn ? (
-          <div className="navbar-item is-pulled-right">
-            <div className="buttons">
-              <a
-                className="button is-info"
-                href={"/you?user_id=" + window.user.uid}
-              >
-                <strong>Your Profile</strong>
-              </a>
-            </div>
+          <div className="navbar-item is-pulled-left">
+            <a
+              className="button is-info"
+              href={"/you?user_id=" + window.user.uid}
+            >
+              <strong>Your Profile</strong>
+            </a>
           </div>
         ) : (
           <></>
