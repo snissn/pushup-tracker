@@ -55,7 +55,7 @@ export default (props) => {
 
   return (
     <div className="center">
-      <div className="file has-name is-boxed">
+      <div className="file has-name ">
         <label className="file-label">
           <input
             className="file-input"
@@ -67,7 +67,6 @@ export default (props) => {
             <span className="file-icon">
               <i className="fas fa-upload "></i>
             </span>
-            <span className="file-label">Choose a file…</span>
           </span>
         </label>
       </div>
