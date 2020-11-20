@@ -129,13 +129,7 @@ export default function Create() {
             <div className="input radio is-large is-fullwidth">
               <div className="control">
                 <label className="button is-link">
-                  <input
-                    checked
-                    type="radio"
-                    name="side"
-                    value="Left"
-                    ref={register}
-                  />
+                  <input type="radio" name="side" value="Left" ref={register} />
                   Left
                 </label>
                 <label className="button is-link ml-4">
@@ -146,6 +140,15 @@ export default function Create() {
                     ref={register}
                   />
                   Right
+                </label>
+                <label className="button is-link ml-4">
+                  <input
+                    type="radio"
+                    name="side"
+                    value="Alternating"
+                    ref={register}
+                  />
+                  Alternating
                 </label>
               </div>
             </div>
