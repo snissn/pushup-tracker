@@ -219,8 +219,9 @@ export default function Create() {
             </button>
           </div>
         </div>
-        <div className="field is-grouped ">
-          <div className="control    mt-4">
+        <div className="field  ">
+          <label className="label">Upload</label>
+          <div className="control is-fullwidth">
             <ImageUpload data={{ register, setValue }} />
           </div>
         </div>
