@@ -17,7 +17,7 @@ $input-shadow: none;
 
 $widescreen-enabled: false;
 $fullhd-enabled: false;
-
+$body-min-width: 600px;
 @import "../../node_modules/bulma/bulma.sass";
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP");
 *,
