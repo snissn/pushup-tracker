@@ -58,12 +58,12 @@ export default (props) => {
       <div className="file has-name ">
         <label className="file-label">
           <input
-            className="file-input"
+            className="file-input input"
             type="file"
             onChange={handleChange}
             ref={props.data.register}
           />
-          <span className="file-cta has-background-link has-text-white">
+          <span className="has-text-centered file-cta has-background-link has-text-white">
             <span className="file-icon">
               <i className="fas fa-upload "></i>
             </span>
@@ -72,11 +72,15 @@ export default (props) => {
       </div>
 
       {progress > 0 && progress < 100 && (
-        <div className="row">
+        <div className="row p-2">
           <progress value={progress} max="100" className="progress" />
         </div>
       )}
-      {url && <img src={url} alt="Uploaded Images" height="300" width="400" />}
+      {url && (
+        <div className="row p-2">
+          <img src={url} alt="Uploaded Images" height="300" width="400" />
+        </div>
+      )}
     </div>
   );
 };
