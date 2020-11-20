@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import Link from "next/link";
+import Link from "../components/Link"; // from "next/link";
 import Router from "next/router";
 import getConfig from "next/config";
 import { auth } from "../lib/db";
@@ -49,7 +49,7 @@ export default class TheNav extends Component {
 
   render() {
     return (
-      <nav className="navbar " role="navigation" aria-label="main navigation">
+      <nav className="navbar  " role="navigation" aria-label="main navigation">
         <div className="navbar-item is-pulled-left">
           <Link href="/">
             <a className=" is-link button ">Home</a>
@@ -79,7 +79,7 @@ export default class TheNav extends Component {
               className="button is-link"
               href={"/you?user_id=" + window.user.uid}
             >
-              <strong>Your Profile</strong>
+              Your Profile
             </a>
           </div>
         ) : (
