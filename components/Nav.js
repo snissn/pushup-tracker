@@ -65,13 +65,26 @@ export default class TheNav extends Component {
             <a className=" button ">Leaderboard</a>
           </Link>
         </div>
-        <div className="navbar-item is-pulled-left">
-          {this.state.signedIn ? (
+        {this.state.signedIn ? (
+          <div className="navbar-item is-pulled-left">
             <Link href="/create">
               <a className=" button ">Log Pushup</a>
             </Link>
-          ) : null}
-        </div>
+          </div>
+        ) : null}
+
+        {this.state.signedIn ? (
+          <div className="navbar-item is-pulled-left">
+            <a
+              className="button is-info"
+              href={"/you?user_id=" + window.user.uid}
+            >
+              <strong>Your Profile</strong>
+            </a>
+          </div>
+        ) : (
+          <></>
+        )}
 
         <div className="navbar-item is-pulled-left">
           {this.state.signedIn ? (
@@ -86,18 +99,6 @@ export default class TheNav extends Component {
             </Link>
           )}
         </div>
-        {this.state.signedIn ? (
-          <div className="navbar-item is-pulled-left">
-            <a
-              className="button is-info"
-              href={"/you?user_id=" + window.user.uid}
-            >
-              <strong>Your Profile</strong>
-            </a>
-          </div>
-        ) : (
-          <></>
-        )}
       </nav>
     );
   }
