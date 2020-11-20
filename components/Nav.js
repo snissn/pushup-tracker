@@ -52,23 +52,23 @@ export default class TheNav extends Component {
       <nav className="navbar " role="navigation" aria-label="main navigation">
         <div className="navbar-item is-pulled-left">
           <Link href="/">
-            <a className=" button ">Home</a>
+            <a className=" is-link button ">Home</a>
           </Link>
         </div>
         <div className="navbar-item is-pulled-left">
           <Link href="/feed">
-            <a className=" button ">Feed</a>
+            <a className=" is-link button ">Feed</a>
           </Link>
         </div>
         <div className="navbar-item is-pulled-left">
           <Link href="/leaderboard">
-            <a className=" button ">Leaderboard</a>
+            <a className="is-link button ">Leaderboard</a>
           </Link>
         </div>
         {this.state.signedIn ? (
           <div className="navbar-item is-pulled-left">
             <Link href="/create">
-              <a className=" button ">Log Pushup</a>
+              <a className="is-link button ">Log Pushup</a>
             </Link>
           </div>
         ) : null}
@@ -76,7 +76,7 @@ export default class TheNav extends Component {
         {this.state.signedIn ? (
           <div className="navbar-item is-pulled-left">
             <a
-              className="button is-info"
+              className="button is-link"
               href={"/you?user_id=" + window.user.uid}
             >
               <strong>Your Profile</strong>
@@ -93,7 +93,7 @@ export default class TheNav extends Component {
             </a>
           ) : (
             <Link href="/login">
-              <a className="button is-primary">
+              <a className="button is-danger">
                 <strong>Login</strong>
               </a>
             </Link>
