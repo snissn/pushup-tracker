@@ -51,6 +51,23 @@ export default (props) => {
           </div>
         </div>
       </section>
+
+      <section className="hero is-primary is-medium">
+        <div className="hero-body ">
+          <div className="container has-text-centered ">
+            <h1 className="title">This app is open source!</h1>
+            <h2 className="subtitle m-1">
+              <a
+                className="button m-1 is-link"
+                href="https://github.com/snissn/pushup-tracker"
+                target="_ blank"
+              >
+                View the source on Github
+              </a>
+            </h2>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
