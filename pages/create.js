@@ -14,6 +14,8 @@ export default function Create() {
   const options = [
     { value: "Pushup", label: "Push Ups" },
     { value: "Sit Up", label: "Sit Ups" },
+    { value: "Strava Export", label: "Strava Export" },
+
     { value: "Youtube Video", label: "Youtube Video", showExtra: "youtube" },
 
     { value: "Diamond Pushup", label: "Diamond Push Ups" },
