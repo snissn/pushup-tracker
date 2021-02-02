@@ -1,5 +1,6 @@
 import TimeAgo from "react-timeago";
 import ReactPlayer from "react-player";
+import Link from "next/link";
 
 var ColorHash = require("color-hash");
 import UserInfo from "./UserInfo.js";
@@ -60,6 +61,15 @@ export default (props) => {
               {pushup.activity == "Youtube Video" && pushup.url && (
                 <ReactPlayer width="100%" url={pushup.url} />
               )}
+
+              <Link
+                href={{
+                  pathname: "/item",
+                  query: { post_id: pushup.id },
+                }}
+              >
+                <a className="is-size-4	has-text-weight-bol">link</a>
+              </Link>
             </div>
           </div>
         </div>
